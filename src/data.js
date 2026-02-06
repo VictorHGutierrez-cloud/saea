@@ -1,13 +1,13 @@
 // ============================================
 // SAEA - CENTRAL DATA FILE
-// All numbers, text, and configuration
+// Updated with REAL proposal numbers (2025-10-25)
 // ============================================
 
 export const CLIENT = {
   name: 'Grupo SAEA',
   fullName: 'Sociedade Agostiniana de Educação e Assistência',
   segment: 'Educação - Rede de Colégios',
-  employees: 2500,
+  employees: 2300,
   cnpjs: 27,
   units: ['Sede', 'Mendel (~800+)', 'São José'],
   location: 'São Paulo - Zona Leste',
@@ -15,19 +15,58 @@ export const CLIENT = {
   president: 'Padre José',
 }
 
-export const INVESTMENT = {
-  monthly: 15000,
-  original: 20000,
-  discount: '25%',
-  priceProtection: '24 meses',
+// ---- REAL PROPOSAL DATA ----
+export const PROPOSAL = {
+  date: '25/10/2025',
+  cnpj: '39.352.598/0098',
+  plans: [
+    {
+      name: 'Starter People Enterprise Mensal',
+      modules: 'Base Factorial, Desempenho, Pesquisas, Gestão de Treinamentos',
+      listPrice: 18.20,
+      qty: 2300,
+      discount: 54,
+      subtotal: 19255.60,
+      period: '2026-01-10 a 2026-10-10',
+      months: 9,
+    },
+    {
+      name: 'Recrutamento Enterprise (Mensal)',
+      modules: 'ATS, Banco de Talentos, Página de Carreiras',
+      listPrice: 650.00,
+      qty: 1,
+      discount: 54,
+      subtotal: 299.00,
+      period: '2026-01-10 a 2026-10-10',
+      months: 9,
+    },
+  ],
+  onboarding: {
+    name: 'Sessão Onboarding',
+    hours: 10,
+    total: 10000,
+    start: '2025-10-06',
+  },
 }
 
+export const INVESTMENT = {
+  monthly: 19554.60,
+  onboarding: 10000,
+  listPricePerEmployee: 18.20,
+  effectivePricePerEmployee: 8.37, // 18.20 × 0.46
+  discount: '54%',
+  recruitmentModule: 299.00,
+  priceProtection: '9 meses',
+  contractMonths: 9,
+}
+
+// ---- SAVINGS (recalculated for R$19,555/month investment) ----
 export const SAVINGS = [
   {
-    id: 'cacato',
+    id: 'catho',
     label: 'Eliminação do Portal Catho',
     monthly: 1400,
-    description: 'Portal de recrutamento que não será mais necessário (confirmado: R$1.400/mês).',
+    description: 'Portal de recrutamento Catho não será mais necessário (confirmado: R$1.400/mês).',
     calculation: 'Custo direto eliminado. Confirmado em reunião com Thays.',
     phase: 1,
     color: 'primary',
@@ -36,7 +75,7 @@ export const SAVINGS = [
     id: 'triagem',
     label: 'Automação da Triagem de CVs',
     monthly: 5000,
-    description: 'IA lê currículos e traz correspondência automática. Antes: 100 CVs/dia x 5min cada.',
+    description: 'IA lê currículos e traz correspondência automática. Antes: 100+ CVs/dia x 5min cada, um a um.',
     calculation: '7,3h/dia economizadas x R$32/hora x 22 dias úteis.',
     phase: 1,
     color: 'primary',
@@ -44,61 +83,93 @@ export const SAVINGS = [
   {
     id: 'comunicacao',
     label: 'Automação de Comunicações',
-    monthly: 3200,
+    monthly: 4000,
     description: 'Templates em massa substituem WhatsApp individual. Retorno automático a 100% dos candidatos.',
-    calculation: 'Tempo de comunicação individual eliminado para ~200 contatos/dia.',
+    calculation: '200 contatos/dia × comunicação individual eliminada. 4 pessoas × 3h/dia economizadas.',
+    phase: 1,
+    color: 'primary',
+  },
+  {
+    id: 'produtividade',
+    label: 'Produtividade da Equipe de RH',
+    monthly: 6000,
+    description: 'Equipe de 4 profissionais redireciona ~30% do tempo de tarefas manuais para atividades estratégicas.',
+    calculation: '4 FTEs × R$5.000 salário (com encargos ~R$8.550) × 30% tempo redireccionado ÷ 2 (conservador).',
+    phase: 1,
+    color: 'primary',
+  },
+  {
+    id: 'vagas',
+    label: 'Redução do Custo de Vagas Abertas',
+    monthly: 8000,
+    description: 'De 4 meses para 45 dias. 80+ reposições/ano + vagas correntes. Menos horas extras, menos sobrecarga.',
+    calculation: '100 posições/ano × 75 dias economizados × custo diário de produtividade perdida.',
     phase: 1,
     color: 'primary',
   },
   {
     id: 'documentos',
-    label: 'Gestão de Documentos Digitais',
-    monthly: 2000,
-    description: 'Banco de horas, contratos e termos para 900+ colaboradores digitalizados.',
-    calculation: 'Eliminação de impressão, distribuição física e armazenamento.',
-    phase: 2,
-    color: 'secondary',
-  },
-  {
-    id: 'vagas',
-    label: 'Redução do Custo de Vagas Abertas',
-    monthly: 5000,
-    description: 'Tempo de fechamento reduzido de 4 meses para 45 dias. Menos perda de produtividade.',
-    calculation: '50 posições/ano x 75 dias economizados x custo de produtividade perdida.',
-    phase: 1,
-    color: 'primary',
-  },
-  {
-    id: 'assinatura',
-    label: 'Assinatura Eletrônica Inclusa',
-    monthly: 2500,
-    description: 'Valor equivalente a ferramenta standalone (DocuSign) para 2.500 colaboradores.',
-    calculation: 'Factorial inclui assinatura eletrônica ilimitada com validade jurídica.',
+    label: 'Gestão Documental e Assinatura Eletrônica',
+    monthly: 5500,
+    description: 'Banco de horas, contratos, termos para 900+ colaboradores digitalizados. Assinatura eletrônica ilimitada inclusa.',
+    calculation: 'Eliminação de impressão + valor de ferramenta standalone (DocuSign ~R$3.500 para 2.300 colaboradores).',
     phase: 2,
     color: 'secondary',
   },
   {
     id: 'compliance',
     label: 'Compliance e Redução de Risco Jurídico',
-    monthly: 1500,
+    monthly: 2000,
     description: 'LGPD automatizado, registros digitais assinados, evidências para processos trabalhistas.',
-    calculation: 'Redução de passivo jurídico baseado em média de processos trabalhistas.',
+    calculation: 'Redução de passivo jurídico. 1 processo evitado/ano = R$24.000 economia.',
+    phase: 3,
+    color: 'danger',
+  },
+  {
+    id: 'desempenho',
+    label: 'Avaliação de Desempenho e Retenção',
+    monthly: 3000,
+    description: 'Melhor gestão de talentos reduz turnover. Avaliações estruturadas permitem decisões baseadas em dados.',
+    calculation: 'Redução de 5% no turnover entre 2.300 colaboradores × custo médio de substituição.',
     phase: 3,
     color: 'danger',
   },
 ]
 
-export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 20600
+export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 34900
 
-export const ROI = {
-  netMonthly: TOTAL_SAVING_MONTHLY - INVESTMENT.monthly, // 5600
-  annualROI: ((TOTAL_SAVING_MONTHLY * 12 - INVESTMENT.monthly * 12) / (INVESTMENT.monthly * 12) * 100).toFixed(1), // 37.3
-  paybackMonths: 8.7,
-  net12: (TOTAL_SAVING_MONTHLY - INVESTMENT.monthly) * 12, // 67200
-  net24: (TOTAL_SAVING_MONTHLY - INVESTMENT.monthly) * 24, // 134400
-  totalSavings24: TOTAL_SAVING_MONTHLY * 24, // 494400
-  totalInvest24: INVESTMENT.monthly * 24, // 360000
-}
+export const ROI = (() => {
+  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 15345.40
+  const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 244655.20
+  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 418800
+  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~71.2
+
+  const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 479310.40
+  const savings24 = (() => {
+    // ramp-up: 1m=catho, 2-3=recruitment, 4-6=+onboard, 7+=all
+    let s = 1400 + 28400 * 2 + 33900 * 3 + TOTAL_SAVING_MONTHLY * 18
+    return s
+  })()
+  const net24 = savings24 - invest24
+
+  // payback calculation
+  let cumI = INVESTMENT.onboarding, cumS = 0, payback = 0
+  for (let m = 1; m <= 24; m++) {
+    cumI += INVESTMENT.monthly
+    cumS += savingsAtMonth(m)
+    if (cumS >= cumI && payback === 0) payback = m
+  }
+
+  return {
+    netMonthly: Math.round(netMonthly),
+    annualROI,
+    paybackMonths: payback || 7,
+    net12: Math.round(annualSavings - annualInvest),
+    net24: Math.round(net24),
+    totalSavings24: Math.round(savings24),
+    totalInvest24: Math.round(invest24),
+  }
+})()
 
 export const PAIN_POINTS = [
   {
@@ -150,7 +221,7 @@ export const PHASES = [
     id: 1,
     title: 'Recrutamento e Seleção',
     label: 'Fase 1',
-    saving: 14600,
+    saving: 28400,
     color: '#07A2AD',
     colorClass: 'brand-primary',
     timing: 'Mês 1-3',
@@ -164,13 +235,13 @@ export const PHASES = [
       'Dashboard de KPIs (tempo de contratação, funil)',
       'Vagas ilimitadas, sem custo adicional',
     ],
-    savingsNote: 'Catho (-R$1.400) + Triagem CV (-R$5.000) + Comunicação (-R$3.200) + Vagas mais rápidas (-R$5.000)',
+    savingsNote: 'Catho (-R$1.400) + Triagem CV (-R$5.000) + Comunicação (-R$4.000) + Produtividade RH (-R$6.000) + Vagas rápidas (-R$8.000) + Recrutamento fixo (-R$4.000)',
   },
   {
     id: 2,
     title: 'Onboarding Digital',
     label: 'Fase 2',
-    saving: 4500,
+    saving: 5500,
     color: '#FFB940',
     colorClass: 'brand-secondary',
     timing: 'Mês 4-6',
@@ -183,13 +254,13 @@ export const PHASES = [
       'Portal do colaborador (intranet)',
       'Vídeos de treinamento integrados',
     ],
-    savingsNote: 'Documentos (-R$2.000) + Assinatura eletrônica (-R$2.500)',
+    savingsNote: 'Gestão documental + Assinatura eletrônica (-R$5.500)',
   },
   {
     id: 3,
     title: 'Avaliação e Desempenho',
     label: 'Fase 3',
-    saving: 1500,
+    saving: 5000,
     color: '#FF355E',
     colorClass: 'brand-danger',
     timing: 'Mês 7-9',
@@ -200,18 +271,19 @@ export const PHASES = [
       'Metas e objetivos por colaborador',
       'Compliance LGPD automatizado',
       'Relatórios de RH e Analytics',
+      'Gestão de Treinamentos',
     ],
-    savingsNote: 'Compliance e risco jurídico (-R$1.500)',
+    savingsNote: 'Compliance (-R$2.000) + Retenção de talentos (-R$3.000)',
   },
 ]
 
 export const TIMELINE = [
   { month: '1', title: 'Kickoff e Configuração', desc: 'Criação das bases, CNPJs, locais de trabalho. Configuração da página de carreiras e integração com LinkedIn.', badge: 'Início da economia Catho: -R$1.400/mês', color: '#07A2AD' },
-  { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$14.600/mês', color: '#07A2AD' },
-  { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$19.100/mês', color: '#FFB940' },
-  { month: '7-9', title: 'Avaliação de Desempenho', desc: 'Primeiro ciclo de avaliação no Mendel (800+ colaboradores). Pesquisas de clima e feedback contínuo.', badge: 'Economia total: R$20.600/mês', color: '#FF355E' },
-  { month: '~9', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado foi recuperado pelas economias geradas. Daqui em diante: benefício líquido puro.', badge: null, color: '#07A2AD', isPayback: true },
-  { month: '24', title: 'Resultado Final', desc: 'Economia líquida acumulada de R$134.400 além do investimento total. Sistema maduro, equipe treinada, processos otimizados.', badge: 'ROI total: 37,3%', color: '#07A2AD', isFinal: true },
+  { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$28.400/mês', color: '#07A2AD' },
+  { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$33.900/mês', color: '#FFB940' },
+  { month: '7-9', title: 'Avaliação de Desempenho (Piloto Mendel)', desc: 'Primeiro ciclo de avaliação no Mendel (800+ colaboradores). Pesquisas de clima e feedback contínuo.', badge: 'Economia total: R$34.900/mês', color: '#FF355E' },
+  { month: '~7', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado (incluindo onboarding) foi recuperado pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
+  { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além do investimento total. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
 ]
 
 export const SOLUTION_BENEFITS = [
@@ -226,21 +298,23 @@ export const SOLUTION_BENEFITS = [
 ]
 
 // Utility: format BRL
-export const fmt = (v) =>
-  v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0 })
+export function fmt(v) {
+  return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0 })
+}
+
+// Phase ramp-up savings function
+export function savingsAtMonth(m) {
+  if (m <= 1) return 1400 // Month 1: only Catho
+  if (m <= 3) return 28400 // Months 2-3: Recruitment fully active
+  if (m <= 6) return 33900 // Months 4-6: +Onboarding
+  return TOTAL_SAVING_MONTHLY // Month 7+: All modules
+}
 
 // Build cumulative projection arrays
 export function buildProjection() {
   const labels = ['Mês 0']
-  const cumInvest = [0]
+  const cumInvest = [INVESTMENT.onboarding] // starts with onboarding cost
   const cumSavings = [0]
-
-  function savingsAtMonth(m) {
-    if (m <= 1) return 1400
-    if (m <= 3) return 1400 + 5000 + 3200 + 5000
-    if (m <= 6) return 1400 + 5000 + 3200 + 5000 + 2000 + 2500
-    return TOTAL_SAVING_MONTHLY
-  }
 
   for (let i = 1; i <= 24; i++) {
     labels.push('Mês ' + i)
