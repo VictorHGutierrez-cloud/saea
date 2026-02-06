@@ -1,25 +1,14 @@
-# Arquivos temporários do Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Arquivos de backup
-*.bak
-*.tmp
-*~
-
-# Arquivos de log
-*.log
-
-# Arquivos de configuração local
-.env
-.env.local
-
-# Arquivos de IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Arquivos de sistema
+node_modules/
+site-saea/
 .DS_Store
+*.local
+.env
+
+# Old project folders (kept locally, not in repo)
+00_FRAMEWORK/
+01_Propostas_Comerciais/
+02_Scope_of_Work/
+03_Documentos_Word/
+04_Referencias/
+CLIENTES/
+Site/
