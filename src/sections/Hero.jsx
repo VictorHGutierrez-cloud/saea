@@ -27,7 +27,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-12">
-            {CLIENT.fullName} — {CLIENT.employees.toLocaleString('pt-BR')} colaboradores, {CLIENT.cnpjs} CNPJs, processos 100% manuais transformados em operação digital.
+            {CLIENT.fullName} — {INVESTMENT.employeesCovered.toLocaleString('pt-BR')} vidas contratadas, {CLIENT.cnpjs} CNPJs, processos 100% manuais transformados em operação digital.
           </motion.p>
 
           {/* Stats row */}

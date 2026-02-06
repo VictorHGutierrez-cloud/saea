@@ -25,7 +25,7 @@ export default function Decisao() {
               Decisão Baseada em Números
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
-              Com {CLIENT.employees.toLocaleString('pt-BR')} colaboradores e processos 100% manuais, cada mês sem automação custa mais do que o investimento na Factorial.
+              Com {INVESTMENT.employeesCovered.toLocaleString('pt-BR')} vidas contratadas e processos 100% manuais, cada mês sem automação custa mais do que o investimento na Factorial.
             </motion.p>
 
             <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
