@@ -22,7 +22,7 @@ export const PROPOSAL = {
   plans: [
     {
       name: 'Employee Platform / Core',
-      modules: 'Base Factorial, Desempenho, Pesquisas, Gestão de Treinamentos',
+      modules: 'Base Factorial, Pesquisas, Gestão de Treinamentos',
       listPrice: 9.70,
       qty: 1000,
       discount: 0,
@@ -126,28 +126,19 @@ export const SAVINGS = [
     phase: 3,
     color: 'danger',
   },
-  {
-    id: 'desempenho',
-    label: 'Avaliação de Desempenho e Retenção',
-    monthly: 3000,
-    description: 'Melhor gestão de talentos reduz turnover. Avaliações estruturadas permitem decisões baseadas em dados.',
-    calculation: 'Redução de 5% no turnover entre 2.300 colaboradores × custo médio de substituição.',
-    phase: 3,
-    color: 'danger',
-  },
 ]
 
-export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 34900
+export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 31900 (removido avaliação de desempenho -R$3.000)
 
 export const ROI = (() => {
-  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 21300.00
+  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 18300.00
   const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 173200.00
-  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 418800
-  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~157.6
+  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 382800
+  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~120.9
 
   const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 336400.00
   const savings24 = (() => {
-    // ramp-up: 1m=catho, 2-3=recruitment, 4-6=+onboard, 7+=all
+    // ramp-up: 1m=catho, 2-3=recruitment, 4-6=+onboard, 7+=all (sem avaliação de desempenho)
     let s = 1400 + 28400 * 2 + 33900 * 3 + TOTAL_SAVING_MONTHLY * 18
     return s
   })()
@@ -259,22 +250,19 @@ export const PHASES = [
   },
   {
     id: 3,
-    title: 'Avaliação e Desempenho',
+    title: 'Compliance e Analytics',
     label: 'Fase 3',
-    saving: 5000,
+    saving: 2000,
     color: '#FF355E',
     colorClass: 'brand-danger',
     timing: 'Mês 7-9',
     features: [
-      'Avaliação de desempenho (piloto Mendel 800+)',
       'Pesquisas de pulso e clima organizacional',
-      'Feedback contínuo com gestores',
-      'Metas e objetivos por colaborador',
       'Compliance LGPD automatizado',
       'Relatórios de RH e Analytics',
       'Gestão de Treinamentos',
     ],
-    savingsNote: 'Compliance (-R$2.000) + Retenção de talentos (-R$3.000)',
+    savingsNote: 'Compliance (-R$2.000)',
   },
 ]
 
@@ -282,7 +270,7 @@ export const TIMELINE = [
   { month: '1', title: 'Kickoff e Configuração', desc: 'Criação das bases, CNPJs, locais de trabalho. Configuração da página de carreiras e integração com LinkedIn.', badge: 'Início da economia Catho: -R$1.400/mês', color: '#07A2AD' },
   { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$28.400/mês', color: '#07A2AD' },
   { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$33.900/mês', color: '#FFB940' },
-  { month: '7-9', title: 'Avaliação de Desempenho (Piloto Mendel)', desc: 'Primeiro ciclo de avaliação no Mendel (800+ colaboradores). Pesquisas de clima e feedback contínuo.', badge: 'Economia total: R$34.900/mês', color: '#FF355E' },
+  { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$31.900/mês', color: '#FF355E' },
   { month: '~7', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado (incluindo onboarding) foi recuperado pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
   { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além do investimento total. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
 ]
