@@ -25,7 +25,7 @@ export const INVESTMENT = {
 export const SAVINGS = [
   {
     id: 'cacato',
-    label: 'Eliminação do Portal CACATO',
+    label: 'Eliminação do Portal Catho',
     monthly: 1400,
     description: 'Portal de recrutamento que não será mais necessário (confirmado: R$1.400/mês).',
     calculation: 'Custo direto eliminado. Confirmado em reunião com Thays.',
@@ -164,7 +164,7 @@ export const PHASES = [
       'Dashboard de KPIs (tempo de contratação, funil)',
       'Vagas ilimitadas, sem custo adicional',
     ],
-    savingsNote: 'CACATO (-R$1.400) + Triagem CV (-R$5.000) + Comunicação (-R$3.200) + Vagas mais rápidas (-R$5.000)',
+    savingsNote: 'Catho (-R$1.400) + Triagem CV (-R$5.000) + Comunicação (-R$3.200) + Vagas mais rápidas (-R$5.000)',
   },
   {
     id: 2,
@@ -206,7 +206,7 @@ export const PHASES = [
 ]
 
 export const TIMELINE = [
-  { month: '1', title: 'Kickoff e Configuração', desc: 'Criação das bases, CNPJs, locais de trabalho. Configuração da página de carreiras e integração com LinkedIn.', badge: 'Início da economia CACATO: -R$1.400/mês', color: '#07A2AD' },
+  { month: '1', title: 'Kickoff e Configuração', desc: 'Criação das bases, CNPJs, locais de trabalho. Configuração da página de carreiras e integração com LinkedIn.', badge: 'Início da economia Catho: -R$1.400/mês', color: '#07A2AD' },
   { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$14.600/mês', color: '#07A2AD' },
   { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$19.100/mês', color: '#FFB940' },
   { month: '7-9', title: 'Avaliação de Desempenho', desc: 'Primeiro ciclo de avaliação no Mendel (800+ colaboradores). Pesquisas de clima e feedback contínuo.', badge: 'Economia total: R$20.600/mês', color: '#FF355E' },
