@@ -32,7 +32,7 @@ export default function Hero() {
 
           {/* Stats row */}
           <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
-            <StatCard label="Investimento Mensal" value={fmt(INVESTMENT.monthly)} sub={`desconto de ${INVESTMENT.discount} aplicado`} />
+            <StatCard label="Investimento Mensal" value={fmt(INVESTMENT.monthly)} sub={INVESTMENT.discount === '0%' ? `${INVESTMENT.employeesCovered || CLIENT.employees} vidas contratadas` : `desconto de ${INVESTMENT.discount} aplicado`} />
             <StatCard label="Economia Mensal" value={fmt(TOTAL_SAVING_MONTHLY)} sub="em processos automatizados" highlight />
             <StatCard label="ROI Anual" value={`${ROI.annualROI}%`} sub="retorno sobre investimento" />
             <StatCard label="Payback" value={`${ROI.paybackMonths} meses`} sub="para retorno total" />

@@ -1,6 +1,6 @@
 // ============================================
 // SAEA - CENTRAL DATA FILE
-// Updated with REAL proposal numbers (2025-10-25)
+// Updated with NEW pricing (Core R$9,70, Recruitment R$780/CNPJ) - 1.000 vidas
 // ============================================
 
 export const CLIENT = {
@@ -21,22 +21,22 @@ export const PROPOSAL = {
   cnpj: '39.352.598/0098',
   plans: [
     {
-      name: 'Starter People Enterprise Mensal',
+      name: 'Employee Platform / Core',
       modules: 'Base Factorial, Desempenho, Pesquisas, Gestão de Treinamentos',
-      listPrice: 18.20,
-      qty: 2300,
-      discount: 54,
-      subtotal: 19255.60,
+      listPrice: 9.70,
+      qty: 1000,
+      discount: 0,
+      subtotal: 9700.00,
       period: '2026-01-10 a 2026-10-10',
       months: 9,
     },
     {
-      name: 'Recrutamento Enterprise (Mensal)',
+      name: 'Recrutamento (Unlimited)',
       modules: 'ATS, Banco de Talentos, Página de Carreiras',
-      listPrice: 650.00,
-      qty: 1,
-      discount: 54,
-      subtotal: 299.00,
+      listPrice: 780.00,
+      qty: 5,
+      discount: 0,
+      subtotal: 3900.00,
       period: '2026-01-10 a 2026-10-10',
       months: 9,
     },
@@ -50,17 +50,18 @@ export const PROPOSAL = {
 }
 
 export const INVESTMENT = {
-  monthly: 19554.60,
+  monthly: 13600.00, // 1.000 vidas × R$9,70 + 5 CNPJs × R$780
   onboarding: 10000,
-  listPricePerEmployee: 18.20,
-  effectivePricePerEmployee: 8.37, // 18.20 × 0.46
-  discount: '54%',
-  recruitmentModule: 299.00,
+  listPricePerEmployee: 9.70,
+  effectivePricePerEmployee: 9.70, // Preço final, sem desconto
+  discount: '0%',
+  recruitmentModule: 3900.00, // 5 CNPJs × R$780
   priceProtection: '9 meses',
   contractMonths: 9,
+  employeesCovered: 1000, // Vidas contratadas
 }
 
-// ---- SAVINGS (recalculated for R$19,555/month investment) ----
+// ---- SAVINGS (recalculated for R$13,600/month investment - 1.000 vidas) ----
 export const SAVINGS = [
   {
     id: 'catho',
@@ -139,12 +140,12 @@ export const SAVINGS = [
 export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 34900
 
 export const ROI = (() => {
-  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 15345.40
-  const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 244655.20
+  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 21300.00
+  const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 173200.00
   const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 418800
-  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~71.2
+  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~157.6
 
-  const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 479310.40
+  const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 336400.00
   const savings24 = (() => {
     // ramp-up: 1m=catho, 2-3=recruitment, 4-6=+onboard, 7+=all
     let s = 1400 + 28400 * 2 + 33900 * 3 + TOTAL_SAVING_MONTHLY * 18
@@ -163,7 +164,7 @@ export const ROI = (() => {
   return {
     netMonthly: Math.round(netMonthly),
     annualROI,
-    paybackMonths: payback || 7,
+    paybackMonths: payback || 5,
     net12: Math.round(annualSavings - annualInvest),
     net24: Math.round(net24),
     totalSavings24: Math.round(savings24),
