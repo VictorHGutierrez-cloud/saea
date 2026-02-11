@@ -21,22 +21,12 @@ export const PROPOSAL = {
   cnpj: '39.352.598/0098',
   plans: [
     {
-      name: 'Employee Platform / Core',
-      modules: 'Base Factorial, Pesquisas, Gestão de Treinamentos',
-      listPrice: 9.70,
-      qty: 1000,
+      name: 'Core Enterprise + Analytics + ATS',
+      modules: 'Core Enterprise, Analytics, ATS',
+      listPrice: 10.62,
+      qty: 850,
       discount: 0,
-      subtotal: 9700.00,
-      period: '2026-01-10 a 2026-10-10',
-      months: 9,
-    },
-    {
-      name: 'Recrutamento (Unlimited)',
-      modules: 'ATS, Banco de Talentos, Página de Carreiras',
-      listPrice: 780.00,
-      qty: 5,
-      discount: 0,
-      subtotal: 3900.00,
+      subtotal: 9025.00,
       period: '2026-01-10 a 2026-10-10',
       months: 9,
     },
@@ -50,18 +40,18 @@ export const PROPOSAL = {
 }
 
 export const INVESTMENT = {
-  monthly: 13600.00, // 1.000 vidas × R$9,70 + 5 CNPJs × R$780
+  monthly: 9025.00, // 850 vidas × Core Enterprise + Analytics + ATS
   onboarding: 10000,
-  listPricePerEmployee: 9.70,
-  effectivePricePerEmployee: 9.70, // Preço final, sem desconto
+  listPricePerEmployee: 10.62, // R$9.025 / 850 vidas
+  effectivePricePerEmployee: 10.62, // Preço final, sem desconto
   discount: '0%',
-  recruitmentModule: 3900.00, // 5 CNPJs × R$780
+  recruitmentModule: 0, // ATS incluído no Core Enterprise
   priceProtection: '9 meses',
   contractMonths: 9,
-  employeesCovered: 1000, // Vidas contratadas
+  employeesCovered: 850, // Vidas contratadas
 }
 
-// ---- SAVINGS (recalculated for R$13,600/month investment - 1.000 vidas) ----
+// ---- SAVINGS (recalculated for R$9,025/month investment - 850 vidas) ----
 export const SAVINGS = [
   {
     id: 'catho',
@@ -131,12 +121,12 @@ export const SAVINGS = [
 export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 31900 (removido avaliação de desempenho -R$3.000)
 
 export const ROI = (() => {
-  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 18300.00
-  const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 173200.00
+  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 22875.00
+  const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 118300.00
   const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 382800
-  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~120.9
+  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~223.4
 
-  const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 336400.00
+  const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 226600.00
   const savings24 = (() => {
     // ramp-up: 1m=catho, 2-3=recruitment, 4-6=+onboard, 7+=all (sem avaliação de desempenho)
     let s = 1400 + 28400 * 2 + 33900 * 3 + TOTAL_SAVING_MONTHLY * 18
@@ -155,7 +145,7 @@ export const ROI = (() => {
   return {
     netMonthly: Math.round(netMonthly),
     annualROI,
-    paybackMonths: payback || 5,
+    paybackMonths: payback || 4,
     net12: Math.round(annualSavings - annualInvest),
     net24: Math.round(net24),
     totalSavings24: Math.round(savings24),
@@ -271,8 +261,8 @@ export const TIMELINE = [
   { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$28.400/mês', color: '#07A2AD' },
   { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$33.900/mês', color: '#FFB940' },
   { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$31.900/mês', color: '#FF355E' },
-  { month: '~7', title: 'PAYBACK - Retorno Alcançado', desc: 'Todos os custos acumulados (incluindo onboarding) foram recuperados pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
-  { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além dos custos totais. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
+  { month: '~7', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado (incluindo onboarding) foi recuperado pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
+  { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além do investimento total. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
 ]
 
 export const SOLUTION_BENEFITS = [

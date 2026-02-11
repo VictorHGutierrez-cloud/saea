@@ -19,7 +19,7 @@ export default function Modulos() {
           <motion.span variants={fadeUp} className="section-label text-brand-primary">Módulos Contratados</motion.span>
           <motion.h2 variants={fadeUp} className="section-title">O Que Cada Módulo Entrega</motion.h2>
           <motion.p variants={fadeUp} className="section-subtitle">
-            Cada fase gera valor mensurável. O recrutamento sozinho já justifica a maior parte do retorno.
+            Cada fase gera valor mensurável. O recrutamento sozinho já justifica 97% do investimento.
           </motion.p>
         </motion.div>
 

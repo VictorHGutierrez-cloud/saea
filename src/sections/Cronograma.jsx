@@ -18,9 +18,9 @@ export default function Cronograma() {
       <div className="section-wrapper">
         <motion.div className="text-center mb-12" initial="hidden" animate={inView ? 'visible' : 'hidden'} transition={{ staggerChildren: 0.1 }}>
           <motion.span variants={fadeUp} className="section-label text-brand-primary">Linha do Tempo</motion.span>
-          <motion.h2 variants={fadeUp} className="section-title">Linha do Tempo de Economias</motion.h2>
+          <motion.h2 variants={fadeUp} className="section-title">Quando o Investimento se Paga</motion.h2>
           <motion.p variants={fadeUp} className="section-subtitle">
-            A partir do mês 9, as economias já superam os custos. Depois disso, é benefício líquido crescente.
+            A partir do mês 9, cada real investido já gerou retorno. Depois disso, é benefício líquido crescente.
           </motion.p>
         </motion.div>
 
@@ -29,14 +29,14 @@ export default function Cronograma() {
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.2 }}
           className="card p-6 md:p-8 mb-12"
         >
-          <h3 className="text-lg font-bold text-center mb-6 text-stone-900">Economia Acumulada ao Longo do Tempo</h3>
+          <h3 className="text-lg font-bold text-center mb-6 text-stone-900">Investimento Acumulado vs. Economia Acumulada</h3>
           <div style={{ height: 380 }}>
             <Line
               data={{
                 labels,
                 datasets: [
                   {
-                    label: 'Custos Acumulados',
+                    label: 'Investimento Acumulado',
                     data: cumInvest,
                     borderColor: '#FF355E',
                     backgroundColor: 'rgba(255,53,94,0.04)',
