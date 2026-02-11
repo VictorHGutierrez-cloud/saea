@@ -193,11 +193,18 @@ export const PAIN_POINTS = [
 ]
 
 export const VOLUME_DATA = {
-  labels: ['CVs recebidos\n(7 dias)', 'E-mails/dia', 'Meses p/ fechar\nvaga', 'Demissões\nprogramadas', 'Assinaturas\nmanuais/mês'],
-  // Valores recalculados para Mendel (800) + SAEA Center (50) = 850 pessoas
-  // Proporção: 850/2300 ≈ 37% do grupo original
-  values: [580, 75, 4, 30, 330], // Ajustados proporcionalmente para as duas unidades
-  units: ['currículos', 'e-mails', 'meses', 'demissões', 'assinaturas'],
+  // Dados de volume alto (mesma escala)
+  highVolume: {
+    labels: ['CVs recebidos\n(7 dias)', 'E-mails/dia', 'Assinaturas\nmanuais/mês'],
+    values: [580, 75, 330],
+    units: ['currículos', 'e-mails', 'assinaturas'],
+  },
+  // Dados de processos e tempo (escala separada)
+  processData: {
+    labels: ['Meses p/ fechar\nvaga', 'Contratos\nprocessados/mês', 'Horas extras\nRH/mês'],
+    values: [4, 25, 120],
+    units: ['meses', 'contratos', 'horas'],
+  },
 }
 
 export const PHASES = [

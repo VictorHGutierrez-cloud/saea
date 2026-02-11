@@ -61,39 +61,76 @@ export default function Diagnostico() {
           ))}
         </motion.div>
 
-        {/* Volume Chart */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6, duration: 0.5 }}
-          className="card p-6 md:p-8"
-        >
-          <h3 className="text-xl font-bold text-center mb-6 text-stone-900">Volume de Trabalho Manual - Situação Anterior</h3>
-          <div className="relative w-full max-w-3xl mx-auto" style={{ height: 320 }}>
-            <Bar
-              data={{
-                labels: VOLUME_DATA.labels,
-                datasets: [{
-                  label: 'Volume',
-                  data: VOLUME_DATA.values,
-                  backgroundColor: '#64748b', // Cor única e sóbria (slate-500)
-                  borderRadius: 6,
-                  barThickness: 50,
-                }]
-              }}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: { display: false },
-                  tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.y.toLocaleString('pt-BR')} ${VOLUME_DATA.units[ctx.dataIndex]}` } },
-                },
-                scales: {
-                  y: { beginAtZero: true, ticks: { callback: v => v >= 1000 ? (v / 1000).toFixed(1) + 'k' : v } },
-                  x: { ticks: { font: { size: 11 } } },
-                },
-              }}
-            />
-          </div>
-        </motion.div>
+        {/* Volume Charts - Separados por escala */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Gráfico de Volume Alto */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6, duration: 0.5 }}
+            className="card p-6 md:p-8"
+          >
+            <h3 className="text-lg font-bold text-center mb-6 text-stone-900">Volume de Trabalho Manual</h3>
+            <div className="relative w-full" style={{ height: 280 }}>
+              <Bar
+                data={{
+                  labels: VOLUME_DATA.highVolume.labels,
+                  datasets: [{
+                    label: 'Volume',
+                    data: VOLUME_DATA.highVolume.values,
+                    backgroundColor: '#64748b',
+                    borderRadius: 6,
+                    barThickness: 50,
+                  }]
+                }}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.y.toLocaleString('pt-BR')} ${VOLUME_DATA.highVolume.units[ctx.dataIndex]}` } },
+                  },
+                  scales: {
+                    y: { beginAtZero: true, ticks: { callback: v => v >= 1000 ? (v / 1000).toFixed(1) + 'k' : v } },
+                    x: { ticks: { font: { size: 10 } } },
+                  },
+                }}
+              />
+            </div>
+          </motion.div>
+
+          {/* Gráfico de Processos e Tempo */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.7, duration: 0.5 }}
+            className="card p-6 md:p-8"
+          >
+            <h3 className="text-lg font-bold text-center mb-6 text-stone-900">Processos e Tempo</h3>
+            <div className="relative w-full" style={{ height: 280 }}>
+              <Bar
+                data={{
+                  labels: VOLUME_DATA.processData.labels,
+                  datasets: [{
+                    label: 'Processo',
+                    data: VOLUME_DATA.processData.values,
+                    backgroundColor: '#475569',
+                    borderRadius: 6,
+                    barThickness: 50,
+                  }]
+                }}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.y.toLocaleString('pt-BR')} ${VOLUME_DATA.processData.units[ctx.dataIndex]}` } },
+                  },
+                  scales: {
+                    y: { beginAtZero: true, ticks: { callback: v => v >= 1000 ? (v / 1000).toFixed(1) + 'k' : v } },
+                    x: { ticks: { font: { size: 10 } } },
+                  },
+                }}
+              />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
