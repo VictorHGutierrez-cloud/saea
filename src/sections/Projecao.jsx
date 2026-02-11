@@ -66,15 +66,15 @@ export default function Projecao() {
                   {
                     label: 'Investimento Acumulado',
                     data: cumInvest.slice(0, month + 1),
-                    borderColor: '#a1a1aa',
-                    backgroundColor: 'rgba(161,161,170,0.08)',
-                    fill: true, tension: 0.1, borderWidth: 2.5,
+                    borderColor: '#94a3b8',
+                    backgroundColor: 'rgba(148,163,184,0.05)',
+                    fill: true, tension: 0.1, borderWidth: 2,
                   },
                   {
                     label: 'Economia Acumulada',
                     data: cumSavings.slice(0, month + 1),
-                    borderColor: '#07A2AD',
-                    backgroundColor: 'rgba(7,162,173,0.08)',
+                    borderColor: '#475569',
+                    backgroundColor: 'rgba(71,85,105,0.08)',
                     fill: true, tension: 0.2, borderWidth: 2.5,
                   },
                 ]

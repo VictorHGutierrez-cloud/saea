@@ -8,8 +8,8 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Le
 
 const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }
 
-const PHASE_COLORS = { primary: '#07A2AD', secondary: '#FFB940', danger: '#FF355E' }
-const DOUGHNUT_COLORS = ['#07A2AD', '#0d9488', '#14b8a6', '#FFB940', '#f59e0b', '#FF355E', '#fb7185']
+const PHASE_COLORS = { primary: '#475569', secondary: '#64748b', danger: '#475569' }
+const DOUGHNUT_COLORS = ['#475569', '#64748b', '#94a3b8', '#cbd5e1', '#e2e8f0', '#f1f5f9', '#334155'] // Tons de cinza/slate mais sóbrios
 
 export default function ROISection() {
   const ref = useRef(null)
@@ -82,7 +82,7 @@ export default function ROISection() {
               <Bar
                 data={{
                   labels: ['Investimento\nFactorial', 'Economia\nGerada'],
-                  datasets: [{ data: [INVESTMENT.monthly, TOTAL_SAVING_MONTHLY], backgroundColor: ['#a1a1aa', '#07A2AD'], borderRadius: 10, barThickness: 60 }]
+                  datasets: [{ data: [INVESTMENT.monthly, TOTAL_SAVING_MONTHLY], backgroundColor: ['#94a3b8', '#475569'], borderRadius: 6, barThickness: 60 }]
                 }}
                 options={{
                   responsive: true, maintainAspectRatio: false,

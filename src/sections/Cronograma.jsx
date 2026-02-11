@@ -38,16 +38,16 @@ export default function Cronograma() {
                   {
                     label: 'Investimento Acumulado',
                     data: cumInvest,
-                    borderColor: '#FF355E',
-                    backgroundColor: 'rgba(255,53,94,0.04)',
-                    fill: true, tension: 0.1, borderWidth: 2.5, borderDash: [6, 4],
+                    borderColor: '#94a3b8',
+                    backgroundColor: 'rgba(148,163,184,0.05)',
+                    fill: true, tension: 0.1, borderWidth: 2, borderDash: [6, 4],
                   },
                   {
                     label: 'Economia Acumulada',
                     data: cumSavings,
-                    borderColor: '#07A2AD',
-                    backgroundColor: 'rgba(7,162,173,0.08)',
-                    fill: true, tension: 0.3, borderWidth: 3,
+                    borderColor: '#475569',
+                    backgroundColor: 'rgba(71,85,105,0.08)',
+                    fill: true, tension: 0.3, borderWidth: 2.5,
                   },
                 ]
               }}

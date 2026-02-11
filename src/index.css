@@ -28,7 +28,7 @@
     transform: translateY(-2px);
   }
   .stat-gradient {
-    background: linear-gradient(135deg, #07A2AD, #05c4d0);
+    background: linear-gradient(135deg, #475569, #64748b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -42,8 +42,8 @@ input[type="range"].slider-brand {
   height: 8px;
   border-radius: 9999px;
   background: linear-gradient(to right,
-    #07A2AD 0%,
-    #07A2AD var(--val, 100%),
+    #475569 0%,
+    #475569 var(--val, 100%),
     #e7e5e4 var(--val, 100%),
     #e7e5e4 100%
   );
@@ -55,17 +55,17 @@ input[type="range"].slider-brand::-webkit-slider-thumb {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #07A2AD;
+  background: #475569;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(7, 162, 173, 0.45);
+  box-shadow: 0 2px 8px rgba(71, 85, 105, 0.35);
   border: 3px solid white;
 }
 input[type="range"].slider-brand::-moz-range-thumb {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #07A2AD;
+  background: #475569;
   cursor: pointer;
   border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(7, 162, 173, 0.45);
+  box-shadow: 0 2px 8px rgba(71, 85, 105, 0.35);
 }

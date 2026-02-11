@@ -17,7 +17,7 @@ export default function Diagnostico() {
       <div className="section-wrapper">
         <motion.div className="text-center mb-12" initial="hidden" animate={inView ? 'visible' : 'hidden'} transition={{ staggerChildren: 0.1 }}>
           <motion.span variants={fadeUp} className="section-label text-brand-danger">Diagnóstico</motion.span>
-          <motion.h2 variants={fadeUp} className="section-title">Onde a SAEA Estava</motion.h2>
+          <motion.h2 variants={fadeUp} className="section-title">Onde Mendel e SAEA Center Estavam</motion.h2>
           <motion.p variants={fadeUp} className="section-subtitle">
             Dados reais extraídos das reuniões com a equipe de RH. Todos os processos eram 100% manuais.
           </motion.p>
@@ -30,12 +30,12 @@ export default function Diagnostico() {
           transition={{ staggerChildren: 0.12, delayChildren: 0.2 }}
         >
           {[
-            { value: '1.564', label: 'Currículos recebidos', sub: 'em apenas 7 dias, triados um a um' },
-            { value: '4 meses', label: 'Tempo médio para fechar vaga', sub: 'meta com Factorial: 45 dias' },
-            { value: '200', label: 'E-mails por dia', sub: 'com currículos, sem filtros' },
+            { value: VOLUME_DATA.values[0].toLocaleString('pt-BR'), label: 'Currículos recebidos', sub: 'em apenas 7 dias, triados um a um' },
+            { value: `${VOLUME_DATA.values[2]} meses`, label: 'Tempo médio para fechar vaga', sub: 'meta com Factorial: 45 dias' },
+            { value: VOLUME_DATA.values[1].toLocaleString('pt-BR'), label: 'E-mails por dia', sub: 'com currículos, sem filtros' },
           ].map((item, i) => (
-            <motion.div key={i} variants={fadeUp} className="card p-6 text-center border-t-4 border-brand-danger">
-              <p className="text-4xl md:text-5xl font-extrabold text-brand-danger">{item.value}</p>
+            <motion.div key={i} variants={fadeUp} className="card p-6 text-center border-t-4 border-stone-700">
+              <p className="text-4xl md:text-5xl font-extrabold text-stone-800">{item.value}</p>
               <p className="text-stone-700 font-semibold mt-2">{item.label}</p>
               <p className="text-sm text-stone-500">{item.sub}</p>
             </motion.div>
@@ -49,8 +49,8 @@ export default function Diagnostico() {
           transition={{ staggerChildren: 0.08, delayChildren: 0.4 }}
         >
           {PAIN_POINTS.map((p, i) => (
-            <motion.div key={i} variants={fadeUp} className="flex items-start p-5 rounded-2xl bg-red-50/70 border border-red-100 hover:shadow-md transition-shadow">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-brand-danger text-white flex items-center justify-center font-bold text-sm mr-4">
+            <motion.div key={i} variants={fadeUp} className="flex items-start p-5 rounded-xl bg-stone-50 border border-stone-200 hover:shadow-sm transition-shadow">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-stone-700 text-white flex items-center justify-center font-bold text-sm mr-4">
                 {p.icon}
               </div>
               <div>
@@ -74,8 +74,9 @@ export default function Diagnostico() {
                 datasets: [{
                   label: 'Volume',
                   data: VOLUME_DATA.values,
-                  backgroundColor: ['#FF355E', '#FF355E', '#FF355E', '#FFB940', '#FFB940'],
-                  borderRadius: 8,
+                  backgroundColor: '#64748b', // Cor única e sóbria (slate-500)
+                  borderRadius: 6,
+                  barThickness: 50,
                 }]
               }}
               options={{

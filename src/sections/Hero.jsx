@@ -23,11 +23,11 @@ export default function Hero() {
 
           <motion.h1 variants={fadeUp} transition={{ duration: 0.6 }} className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-6">
             Análise de ROI
-            <span className="block text-brand-secondary mt-2">Colégio Agostiniano</span>
+            <span className="block text-brand-secondary mt-2">{CLIENT.name}</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-12">
-            {CLIENT.fullName} — {INVESTMENT.employeesCovered.toLocaleString('pt-BR')} vidas contratadas, {CLIENT.cnpjs} CNPJs, processos 100% manuais transformados em operação digital.
+            {CLIENT.units[0]} e {CLIENT.units[1]} — {INVESTMENT.employeesCovered.toLocaleString('pt-BR')} vidas contratadas, processos 100% manuais transformados em operação digital.
           </motion.p>
 
           {/* Stats row */}

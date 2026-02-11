@@ -4,14 +4,14 @@
 // ============================================
 
 export const CLIENT = {
-  name: 'Grupo SAEA',
-  fullName: 'Sociedade Agostiniana de Educação e Assistência',
+  name: 'Mendel College & SAEA Center',
+  fullName: 'Colégio Agostiniano Mendel e Centro SAEA',
   segment: 'Educação - Rede de Colégios',
-  employees: 2300,
-  cnpjs: 27,
-  units: ['Sede', 'Mendel (~800+)', 'São José'],
+  employees: 850, // Mendel: 800 + SAEA Center: 50
+  cnpjs: 2, // Mendel + SAEA Center
+  units: ['Colégio Agostiniano Mendel (800 colaboradores)', 'Centro SAEA (50 colaboradores)'],
   location: 'São Paulo - Zona Leste',
-  hrTeam: ['Thays (Geral)', 'Fabiana (Sede)', 'Marisa (São José)', 'Stephanie (Mendel)'],
+  hrTeam: ['Thays (Geral)', 'Stephanie (Mendel)'],
   president: 'Padre José',
 }
 
@@ -102,8 +102,8 @@ export const SAVINGS = [
     id: 'documentos',
     label: 'Gestão Documental e Assinatura Eletrônica',
     monthly: 5500,
-    description: 'Banco de horas, contratos, termos para 900+ colaboradores digitalizados. Assinatura eletrônica ilimitada inclusa.',
-    calculation: 'Eliminação de impressão + valor de ferramenta standalone (DocuSign ~R$3.500 para 2.300 colaboradores).',
+    description: 'Banco de horas, contratos, termos para 850 colaboradores digitalizados. Assinatura eletrônica ilimitada inclusa.',
+    calculation: 'Eliminação de impressão + valor de ferramenta standalone (DocuSign ~R$1.300 para 850 colaboradores).',
     phase: 2,
     color: 'secondary',
   },
@@ -175,7 +175,7 @@ export const PAIN_POINTS = [
   {
     icon: '4',
     title: 'Assinaturas Manuais (900+ pessoas)',
-    quote: '"Eu ainda assino banco de horas e folhas de ponto mensal de 900 colaboradores."',
+    quote: '"Eu ainda assino banco de horas e folhas de ponto mensal de 330 colaboradores."',
     detail: 'Toda documentação era impressa, assinada fisicamente e armazenada.',
   },
   {
@@ -194,7 +194,9 @@ export const PAIN_POINTS = [
 
 export const VOLUME_DATA = {
   labels: ['CVs recebidos\n(7 dias)', 'E-mails/dia', 'Meses p/ fechar\nvaga', 'Demissões\nprogramadas', 'Assinaturas\nmanuais/mês'],
-  values: [1564, 200, 4, 80, 900],
+  // Valores recalculados para Mendel (800) + SAEA Center (50) = 850 pessoas
+  // Proporção: 850/2300 ≈ 37% do grupo original
+  values: [580, 75, 4, 30, 330], // Ajustados proporcionalmente para as duas unidades
   units: ['currículos', 'e-mails', 'meses', 'demissões', 'assinaturas'],
 }
 

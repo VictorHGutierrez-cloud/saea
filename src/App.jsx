@@ -23,7 +23,7 @@ export default function App() {
         <Decisao />
       </main>
       <footer className="text-center py-10 border-t border-stone-200">
-        <p className="text-sm text-stone-400">Grupo SAEA x Factorial RH | Proposta Completa</p>
+        <p className="text-sm text-stone-400">Mendel College & SAEA Center x Factorial RH | Proposta Completa</p>
         <p className="text-xs text-stone-300 mt-1">Estimativas baseadas em dados reais das reuniões e benchmarks do mercado brasileiro.</p>
       </footer>
     </div>
