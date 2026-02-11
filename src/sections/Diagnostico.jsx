@@ -17,7 +17,7 @@ export default function Diagnostico() {
       <div className="section-wrapper">
         <motion.div className="text-center mb-12" initial="hidden" animate={inView ? 'visible' : 'hidden'} transition={{ staggerChildren: 0.1 }}>
           <motion.span variants={fadeUp} className="section-label text-brand-danger">Diagnóstico</motion.span>
-          <motion.h2 variants={fadeUp} className="section-title">Onde Mendel e SAEA Center Estavam</motion.h2>
+          <motion.h2 variants={fadeUp} className="section-title">Onde Colégio Mendel e SAEA Estavam</motion.h2>
           <motion.p variants={fadeUp} className="section-subtitle">
             Dados reais extraídos das reuniões com a equipe de RH. Todos os processos eram 100% manuais.
           </motion.p>

@@ -4,7 +4,7 @@
 // ============================================
 
 export const CLIENT = {
-  name: 'Mendel College & SAEA Center',
+  name: 'Colégio Mendel e SAEA',
   fullName: 'Colégio Agostiniano Mendel e Centro SAEA',
   segment: 'Educação - Rede de Colégios',
   employees: 850, // Mendel: 800 + SAEA Center: 50
