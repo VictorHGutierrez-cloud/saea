@@ -77,12 +77,12 @@ export default function ROISection() {
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6 }} className="card p-6">
-            <h3 className="text-lg font-bold text-center mb-6 text-stone-900">Investimento vs. Economia (Mensal)</h3>
+            <h3 className="text-lg font-bold text-center mb-6 text-stone-900">Economia Gerada (Mensal)</h3>
             <div style={{ height: 280 }}>
               <Bar
                 data={{
-                  labels: ['Investimento\nFactorial', 'Economia\nGerada'],
-                  datasets: [{ data: [INVESTMENT.monthly, TOTAL_SAVING_MONTHLY], backgroundColor: ['#a1a1aa', '#07A2AD'], borderRadius: 10, barThickness: 60 }]
+                  labels: ['Economia\nGerada'],
+                  datasets: [{ data: [TOTAL_SAVING_MONTHLY], backgroundColor: ['#07A2AD'], borderRadius: 10, barThickness: 60 }]
                 }}
                 options={{
                   responsive: true, maintainAspectRatio: false,

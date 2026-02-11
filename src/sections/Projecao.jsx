@@ -24,7 +24,7 @@ export default function Projecao() {
           <motion.span variants={fadeUp} className="section-label text-brand-primary">Projeção Financeira</motion.span>
           <motion.h2 variants={fadeUp} className="section-title">Economia Acumulada em 24 Meses</motion.h2>
           <motion.p variants={fadeUp} className="section-subtitle">
-            Arraste o controle para ver como a economia cresce mês a mês. O investimento se paga em menos de 9 meses.
+            Arraste o controle para ver como a economia cresce mês a mês. O retorno se paga em menos de 9 meses.
           </motion.p>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function Projecao() {
                 <p className={`text-2xl font-extrabold ${net >= 0 ? 'text-brand-primary' : 'text-brand-danger'}`}>{fmt(net)}</p>
               </div>
               <div className="rounded-xl p-4 text-center bg-amber-50 border border-amber-200 min-w-[140px]">
-                <span className="text-xs text-stone-500 block">Investido até</span>
+                <span className="text-xs text-stone-500 block">Custos até</span>
                 <span className="text-lg font-bold text-brand-secondary">Mês {month}</span>
                 <p className="text-2xl font-extrabold text-brand-secondary">{fmt(cumInvest[month])}</p>
               </div>
@@ -64,7 +64,7 @@ export default function Projecao() {
                 labels: labels.slice(0, month + 1),
                 datasets: [
                   {
-                    label: 'Investimento Acumulado',
+                    label: 'Custos Acumulados',
                     data: cumInvest.slice(0, month + 1),
                     borderColor: '#a1a1aa',
                     backgroundColor: 'rgba(161,161,170,0.08)',
@@ -101,7 +101,7 @@ export default function Projecao() {
               </div>
               <span className="text-2xl font-bold text-stone-300">-</span>
               <div className="p-3 bg-white rounded-lg shadow-sm border">
-                <p className="text-xs text-stone-500">Investimento Total</p>
+                <p className="text-xs text-stone-500">Custos Totais</p>
                 <p className="text-xl font-bold text-stone-700">{fmt(ROI.totalInvest24)}</p>
               </div>
               <span className="text-2xl font-bold text-stone-300">=</span>
@@ -111,7 +111,7 @@ export default function Projecao() {
               </div>
             </div>
             <p className="text-center mt-4 text-sm text-stone-500">
-              <strong>ROI = (Economia - Investimento) / Investimento = ({fmt(ROI.totalSavings24)} - {fmt(ROI.totalInvest24)}) / {fmt(ROI.totalInvest24)} = <span className="text-brand-primary font-bold text-base">{ROI.annualROI}%</span></strong>
+              <strong>ROI = (Economia - Custos) / Custos = ({fmt(ROI.totalSavings24)} - {fmt(ROI.totalInvest24)}) / {fmt(ROI.totalInvest24)} = <span className="text-brand-primary font-bold text-base">{ROI.annualROI}%</span></strong>
             </p>
           </div>
         </motion.div>

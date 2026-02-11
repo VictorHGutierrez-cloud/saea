@@ -18,7 +18,7 @@ export default function Hero() {
           transition={{ staggerChildren: 0.15 }}
         >
           <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="text-brand-secondary font-semibold text-sm tracking-[0.25em] uppercase mb-4">
-            Retorno sobre Investimento
+            Análise de Retorno
           </motion.p>
 
           <motion.h1 variants={fadeUp} transition={{ duration: 0.6 }} className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-6">
@@ -31,10 +31,9 @@ export default function Hero() {
           </motion.p>
 
           {/* Stats row */}
-          <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
-            <StatCard label="Investimento Mensal" value={fmt(INVESTMENT.monthly)} sub={INVESTMENT.discount === '0%' ? `${INVESTMENT.employeesCovered || CLIENT.employees} vidas contratadas` : `desconto de ${INVESTMENT.discount} aplicado`} />
+          <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
             <StatCard label="Economia Mensal" value={fmt(TOTAL_SAVING_MONTHLY)} sub="em processos automatizados" highlight />
-            <StatCard label="ROI Anual" value={`${ROI.annualROI}%`} sub="retorno sobre investimento" />
+            <StatCard label="ROI Anual" value={`${ROI.annualROI}%`} sub="retorno calculado" />
             <StatCard label="Payback" value={`${ROI.paybackMonths} meses`} sub="para retorno total" />
           </motion.div>
 

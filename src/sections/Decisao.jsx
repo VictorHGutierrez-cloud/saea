@@ -25,18 +25,13 @@ export default function Decisao() {
               Decisão Baseada em Números
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
-              Com {INVESTMENT.employeesCovered.toLocaleString('pt-BR')} vidas contratadas e processos 100% manuais, cada mês sem automação custa mais do que o investimento na Factorial.
+              Com {INVESTMENT.employeesCovered.toLocaleString('pt-BR')} vidas contratadas e processos 100% manuais, cada mês sem automação custa mais do que a solução da Factorial.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
+            <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <p className="text-white/60 text-sm mb-1">Custo dos processos manuais</p>
                 <p className="text-3xl font-extrabold text-white">{fmt(TOTAL_SAVING_MONTHLY)}</p>
-                <p className="text-white/40 text-xs mt-1">por mês</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                <p className="text-white/60 text-sm mb-1">Investimento Factorial</p>
-                <p className="text-3xl font-extrabold text-white">{fmt(INVESTMENT.monthly)}</p>
                 <p className="text-white/40 text-xs mt-1">por mês</p>
               </div>
               <div className="bg-white rounded-2xl p-6 shadow-xl">

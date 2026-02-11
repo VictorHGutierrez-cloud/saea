@@ -271,8 +271,8 @@ export const TIMELINE = [
   { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$28.400/mês', color: '#07A2AD' },
   { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$33.900/mês', color: '#FFB940' },
   { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$31.900/mês', color: '#FF355E' },
-  { month: '~7', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado (incluindo onboarding) foi recuperado pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
-  { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além do investimento total. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
+  { month: '~7', title: 'PAYBACK - Retorno Alcançado', desc: 'Todos os custos acumulados (incluindo onboarding) foram recuperados pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
+  { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além dos custos totais. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
 ]
 
 export const SOLUTION_BENEFITS = [
