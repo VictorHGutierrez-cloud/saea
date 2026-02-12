@@ -29,6 +29,12 @@ export const PROPOSAL = {
       subtotal: 9025.00,
       period: '2026-01-10 a 2026-10-10',
       months: 9,
+      included: [
+        'Portal do Colaborador (comunicação e acesso fácil)',
+        'Assinatura Digital Ilimitada',
+        'Analytics e Relatórios em SQL',
+        'ATS (Sistema de Recrutamento)',
+      ],
     },
   ],
   onboarding: {
