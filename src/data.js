@@ -71,45 +71,36 @@ export const SAVINGS = [
   {
     id: 'triagem',
     label: 'Automação da Triagem de CVs',
-    monthly: 5000,
-    description: 'IA lê currículos e traz correspondência automática. Antes: 100+ CVs/dia x 5min cada, um a um.',
-    calculation: '7,3h/dia economizadas x R$32/hora x 22 dias úteis.',
+    monthly: 3500,
+    description: 'IA lê currículos e traz correspondência automática. Antes: 580 CVs/semana triados manualmente.',
+    calculation: '~5h/dia economizadas x R$32/hora x 22 dias úteis = R$3.520/mês (ajustado para volume de Mendel + SAEA).',
     phase: 1,
     color: 'primary',
   },
   {
     id: 'comunicacao',
     label: 'Automação de Comunicações',
-    monthly: 4000,
+    monthly: 2800,
     description: 'Templates em massa substituem WhatsApp individual. Retorno automático a 100% dos candidatos.',
-    calculation: '200 contatos/dia × comunicação individual eliminada. 4 pessoas × 3h/dia economizadas.',
+    calculation: '~75 contatos/dia × comunicação individual eliminada. 2 pessoas × 2,5h/dia economizadas (proporcional para 850 vidas).',
     phase: 1,
     color: 'primary',
   },
   {
     id: 'produtividade',
     label: 'Produtividade da Equipe de RH',
-    monthly: 6000,
-    description: 'Equipe de 4 profissionais redireciona ~30% do tempo de tarefas manuais para atividades estratégicas.',
-    calculation: '4 FTEs × R$5.000 salário (com encargos ~R$8.550) × 30% tempo redireccionado ÷ 2 (conservador).',
+    monthly: 4200,
+    description: 'Equipe de RH redireciona ~25% do tempo de tarefas manuais para atividades estratégicas.',
+    calculation: '2-3 profissionais × R$5.000 salário (com encargos ~R$8.550) × 25% tempo redireccionado ÷ 2 (conservador, ajustado para equipe menor).',
     phase: 1,
     color: 'primary',
   },
   {
     id: 'vagas',
     label: 'Redução do Custo de Vagas Abertas',
-    monthly: 8000,
-    description: 'De 4 meses para 45 dias. 80+ reposições/ano + vagas correntes. Menos horas extras, menos sobrecarga.',
-    calculation: '100 posições/ano × 75 dias economizados × custo diário de produtividade perdida.',
-    phase: 1,
-    color: 'primary',
-  },
-  {
-    id: 'recrutamento-fixo',
-    label: 'Eliminação de Custos Fixos de Recrutamento',
-    monthly: 4000,
-    description: 'Custos fixos de recrutamento eliminados com a plataforma integrada (economia em ferramentas e processos manuais).',
-    calculation: 'Custos fixos de recrutamento eliminados com automação.',
+    monthly: 4500,
+    description: 'De 4 meses para 45 dias. ~30 reposições/ano + vagas correntes. Menos horas extras, menos sobrecarga.',
+    calculation: '~30 posições/ano (proporcional para 850 vidas) × 75 dias economizados × custo diário de produtividade perdida.',
     phase: 1,
     color: 'primary',
   },
@@ -133,18 +124,18 @@ export const SAVINGS = [
   },
 ]
 
-export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 35900 (todas as economias incluindo recrutamento fixo)
+export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 23900 (economias recalculadas proporcionalmente para 850 vidas)
 
 export const ROI = (() => {
-  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 26875.00
+  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 14875.00
   const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 118300.00
-  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 430800
-  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~264.0
+  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 286800
+  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~142.3
 
   const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 226600.00
   const savings24 = (() => {
-    // ramp-up: 1m=catho, 2-3=recruitment (28400), 4-6=+onboard (33900), 7+=all (35900)
-    let s = 1400 + 28400 * 2 + 33900 * 3 + TOTAL_SAVING_MONTHLY * 18
+    // ramp-up: 1m=catho, 2-3=recruitment (16400), 4-6=+onboard (21900), 7+=all (23900)
+    let s = 1400 + 16400 * 2 + 21900 * 3 + TOTAL_SAVING_MONTHLY * 18
     return s
   })()
   const net24 = savings24 - invest24
@@ -227,7 +218,7 @@ export const PHASES = [
     id: 1,
     title: 'Recrutamento e Seleção',
     label: 'Fase 1',
-    saving: 28400,
+    saving: 16400,
     color: '#07A2AD',
     colorClass: 'brand-primary',
     timing: 'Mês 1-3',
@@ -241,7 +232,7 @@ export const PHASES = [
       'Dashboard de KPIs (tempo de contratação, funil)',
       'Vagas ilimitadas, sem custo adicional',
     ],
-    savingsNote: 'Catho (-R$1.400) + Triagem CV (-R$5.000) + Comunicação (-R$4.000) + Produtividade RH (-R$6.000) + Vagas rápidas (-R$8.000) + Recrutamento fixo (-R$4.000)',
+    savingsNote: 'Catho (-R$1.400) + Triagem CV (-R$3.500) + Comunicação (-R$2.800) + Produtividade RH (-R$4.200) + Vagas rápidas (-R$4.500)',
   },
   {
     id: 2,
@@ -282,9 +273,9 @@ export const PHASES = [
 
 export const TIMELINE = [
   { month: '1', title: 'Kickoff e Configuração', desc: 'Criação das bases, CNPJs, locais de trabalho. Configuração da página de carreiras e integração com LinkedIn.', badge: 'Início da economia Catho: -R$1.400/mês', color: '#07A2AD' },
-  { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$28.400/mês', color: '#07A2AD' },
-  { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$33.900/mês', color: '#FFB940' },
-  { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$35.900/mês', color: '#FF355E' },
+  { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$16.400/mês', color: '#07A2AD' },
+  { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$21.900/mês', color: '#FFB940' },
+  { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$23.900/mês', color: '#FF355E' },
   { month: '~7', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado (incluindo onboarding) foi recuperado pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
   { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além do investimento total. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
 ]
@@ -308,9 +299,9 @@ export function fmt(v) {
 // Phase ramp-up savings function
 export function savingsAtMonth(m) {
   if (m <= 1) return 1400 // Month 1: only Catho
-  if (m <= 3) return 28400 // Months 2-3: Recruitment fully active (Fase 1)
-  if (m <= 6) return 33900 // Months 4-6: +Onboarding (Fase 1 + Fase 2)
-  return TOTAL_SAVING_MONTHLY // Month 7+: All modules (Fase 1 + Fase 2 + Fase 3 = R$35.900)
+  if (m <= 3) return 16400 // Months 2-3: Recruitment fully active (Fase 1: R$16.400)
+  if (m <= 6) return 21900 // Months 4-6: +Onboarding (Fase 1 + Fase 2: R$16.400 + R$5.500)
+  return TOTAL_SAVING_MONTHLY // Month 7+: All modules (Fase 1 + Fase 2 + Fase 3 = R$23.900)
 }
 
 // Build cumulative projection arrays
