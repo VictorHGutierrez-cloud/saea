@@ -30,9 +30,9 @@ export default function Diagnostico() {
           transition={{ staggerChildren: 0.12, delayChildren: 0.2 }}
         >
           {[
-            { value: VOLUME_DATA.values[0].toLocaleString('pt-BR'), label: 'Currículos recebidos', sub: 'em apenas 7 dias, triados um a um' },
-            { value: `${VOLUME_DATA.values[2]} meses`, label: 'Tempo médio para fechar vaga', sub: 'meta com Factorial: 45 dias' },
-            { value: VOLUME_DATA.values[1].toLocaleString('pt-BR'), label: 'E-mails por dia', sub: 'com currículos, sem filtros' },
+            { value: VOLUME_DATA.highVolume.values[0].toLocaleString('pt-BR'), label: 'Currículos recebidos', sub: 'em apenas 7 dias, triados um a um' },
+            { value: `${VOLUME_DATA.processData.values[0]} meses`, label: 'Tempo médio para fechar vaga', sub: 'meta com Factorial: 45 dias' },
+            { value: VOLUME_DATA.highVolume.values[1].toLocaleString('pt-BR'), label: 'E-mails por dia', sub: 'com currículos, sem filtros' },
           ].map((item, i) => (
             <motion.div key={i} variants={fadeUp} className="card p-6 text-center border-t-4 border-stone-700">
               <p className="text-4xl md:text-5xl font-extrabold text-stone-800">{item.value}</p>
