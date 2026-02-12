@@ -99,6 +99,15 @@ export const SAVINGS = [
     color: 'primary',
   },
   {
+    id: 'recrutamento-fixo',
+    label: 'Eliminação de Custos Fixos de Recrutamento',
+    monthly: 4000,
+    description: 'Custos fixos de recrutamento eliminados com a plataforma integrada (economia em ferramentas e processos manuais).',
+    calculation: 'Custos fixos de recrutamento eliminados com automação.',
+    phase: 1,
+    color: 'primary',
+  },
+  {
     id: 'documentos',
     label: 'Gestão Documental e Assinatura Eletrônica',
     monthly: 5500,
@@ -118,23 +127,23 @@ export const SAVINGS = [
   },
 ]
 
-export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 31900 (removido avaliação de desempenho -R$3.000)
+export const TOTAL_SAVING_MONTHLY = SAVINGS.reduce((a, s) => a + s.monthly, 0) // 35900 (todas as economias incluindo recrutamento fixo)
 
 export const ROI = (() => {
-  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 22875.00
+  const netMonthly = TOTAL_SAVING_MONTHLY - INVESTMENT.monthly // 26875.00
   const annualInvest = INVESTMENT.monthly * 12 + INVESTMENT.onboarding // 118300.00
-  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 382800
-  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~223.4
+  const annualSavings = TOTAL_SAVING_MONTHLY * 12 // 430800
+  const annualROI = ((annualSavings - annualInvest) / annualInvest * 100).toFixed(1) // ~264.0
 
   const invest24 = INVESTMENT.monthly * 24 + INVESTMENT.onboarding // 226600.00
   const savings24 = (() => {
-    // ramp-up: 1m=catho, 2-3=recruitment, 4-6=+onboard, 7+=all (sem avaliação de desempenho)
+    // ramp-up: 1m=catho, 2-3=recruitment (28400), 4-6=+onboard (33900), 7+=all (35900)
     let s = 1400 + 28400 * 2 + 33900 * 3 + TOTAL_SAVING_MONTHLY * 18
     return s
   })()
   const net24 = savings24 - invest24
 
-  // payback calculation
+  // payback calculation - quando economias acumuladas >= investimento acumulado
   let cumI = INVESTMENT.onboarding, cumS = 0, payback = 0
   for (let m = 1; m <= 24; m++) {
     cumI += INVESTMENT.monthly
@@ -145,7 +154,7 @@ export const ROI = (() => {
   return {
     netMonthly: Math.round(netMonthly),
     annualROI,
-    paybackMonths: payback || 4,
+    paybackMonths: payback || 3,
     net12: Math.round(annualSavings - annualInvest),
     net24: Math.round(net24),
     totalSavings24: Math.round(savings24),
@@ -269,7 +278,7 @@ export const TIMELINE = [
   { month: '1', title: 'Kickoff e Configuração', desc: 'Criação das bases, CNPJs, locais de trabalho. Configuração da página de carreiras e integração com LinkedIn.', badge: 'Início da economia Catho: -R$1.400/mês', color: '#07A2AD' },
   { month: '2-3', title: 'Recrutamento Operacional', desc: 'Vagas publicadas, banco de talentos ativo, IA triando currículos, comunicação automatizada funcionando.', badge: 'Economia sobe para R$28.400/mês', color: '#07A2AD' },
   { month: '4-6', title: 'Onboarding Digital Ativo', desc: 'Trilhas de onboarding por cargo, assinatura eletrônica de contratos, coleta digital de documentos.', badge: 'Economia sobe para R$33.900/mês', color: '#FFB940' },
-  { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$31.900/mês', color: '#FF355E' },
+  { month: '7-9', title: 'Compliance e Analytics', desc: 'Compliance LGPD automatizado, pesquisas de clima e relatórios de RH em produção.', badge: 'Economia total: R$35.900/mês', color: '#FF355E' },
   { month: '~7', title: 'PAYBACK - Investimento Recuperado', desc: 'Todo o investimento acumulado (incluindo onboarding) foi recuperado pelas economias geradas.', badge: null, color: '#07A2AD', isPayback: true },
   { month: '24', title: 'Resultado em 24 Meses', desc: `Economia líquida acumulada de ${fmt(ROI.net24)} além do investimento total. Sistema maduro, equipe treinada.`, badge: `ROI total: ${ROI.annualROI}%`, color: '#07A2AD', isFinal: true },
 ]
@@ -293,9 +302,9 @@ export function fmt(v) {
 // Phase ramp-up savings function
 export function savingsAtMonth(m) {
   if (m <= 1) return 1400 // Month 1: only Catho
-  if (m <= 3) return 28400 // Months 2-3: Recruitment fully active
-  if (m <= 6) return 33900 // Months 4-6: +Onboarding
-  return TOTAL_SAVING_MONTHLY // Month 7+: All modules
+  if (m <= 3) return 28400 // Months 2-3: Recruitment fully active (Fase 1)
+  if (m <= 6) return 33900 // Months 4-6: +Onboarding (Fase 1 + Fase 2)
+  return TOTAL_SAVING_MONTHLY // Month 7+: All modules (Fase 1 + Fase 2 + Fase 3 = R$35.900)
 }
 
 // Build cumulative projection arrays
